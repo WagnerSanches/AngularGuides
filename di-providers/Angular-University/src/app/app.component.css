@@ -1,0 +1,44 @@
+.item {
+    background-color: rgb(230, 230, 230);
+    margin: 30px auto;
+    padding: 30px 10px;
+    padding-left: 30px;
+    max-width: 450px;
+    border-radius: 7px;
+}
+
+.item h2 {
+    text-transform: uppercase;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(134, 134, 134);
+}
+
+.item p {
+    margin: 0px;
+    color: rgb(168, 168, 168);
+}
+
+.buy {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-top: 30px;
+    padding-right: 30px;
+}
+
+.buy p {
+    margin-right: 30px;
+    font-weight: bolder;
+    font-size: 19px;
+}
+
+.buy button {
+    all: unset;
+    background-color: rgb(95, 95, 255);
+    color: white;
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 9px 24px;
+}
+

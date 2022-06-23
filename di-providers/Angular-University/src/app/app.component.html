@@ -1,0 +1,12 @@
+<div class="screen">
+  <div *ngFor="let course of courses" class="item">
+    <h2> {{ course.name }} </h2>
+    <p> {{ course.desc }}</p>
+
+    <div class="buy">
+      <p> {{ course.price | currency }}</p>
+      <button type="button">Buy</button>
+    </div>
+  </div>
+
+</div>
