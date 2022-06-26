@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { EmployeeData, ListGenerator } from './shared/list-generator.service';
 
 import { Sales } from './Data/sales-70-27-30';
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
   title = 'performance-pattern';
 
-  constructor(private generator: ListGenerator) {}
+  constructor(private generator: ListGenerator, private zone: NgZone) {}
 
   ngOnInit(): void {
     const data: [{x: string[], y: number[], type: 'bar'}] = [{
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
       data[0].y.push(entity[1]);
     }
 
-    PlotlyJS.newPlot('chart', data);
+    this.zone.runOutsideAngular(() => PlotlyJS.newPlot('chart', data));
   }
 
   add(list: EmployeeData[], name: string) {
