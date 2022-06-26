@@ -1,5 +1,6 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, OnInit } from '@angular/core';
 import { EmployeeData, ListGenerator } from './shared/list-generator.service';
+import { List } from 'immutable';
 
 import { Sales } from './Data/sales-70-27-30';
 import { Rnd } from './Data/rnd-70-27-30';
@@ -14,12 +15,13 @@ const NumRange: [number, number] = [23, 28];
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 
-  salesList: EmployeeData[] = Sales;
-  rndList: EmployeeData[] = Rnd;
+  salesList = List(Sales);
+  rndList = List(Rnd);
 
   title = 'performance-pattern';
 
@@ -49,11 +51,11 @@ export class AppComponent implements OnInit {
     this.zone.runOutsideAngular(() => PlotlyJS.newPlot('chart', data));
   }
 
-  add(list: EmployeeData[], name: string) {
+  add(list: List<EmployeeData>, name: string) {
     return list.unshift({label: name, num: this.generator.generateNumber(NumRange)})
   }
 
-  remove(list: EmployeeData[], node: EmployeeData) {
+  remove(list: List<EmployeeData>, node: EmployeeData) {
     return list.splice(list.indexOf(node), 1);
   }
 }

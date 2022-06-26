@@ -1,23 +1,7 @@
 <h1 title="Department">{{ department }}</h1>
 
-<mat-form-field floatLabel="never">
-    <input placeholder="Enter name here" matInput type="text" [(ngModel)]="label" (keydown)="handleKey($event)">
-</mat-form-field>
+<app-name-input
+    (add)="add.emit($event)">
+</app-name-input>
 
-<mat-list>
-    <div *ngIf="data?.length === 0" class="empty-list-label">Empty list</div>
-    <mat-list-item *ngFor="let item of data">
-        <h3 matLine title="Name">
-            {{ item.label }}
-        </h3>
-        <mat-chip-list>
-            <mat-chip title="Score" class="mat-chip mat-primary mat-chip-selected" color="primary" selected="true">
-                {{ calculate(item.num) }}
-            </mat-chip>
-        </mat-chip-list>
-        <span title="Delete" aria-hidden="true" class="material-icons delete" (click)="remove.emit(item)">
-            delete
-        </span>
-    </mat-list-item>
-    <mat-divider *ngIf="data?.length !== 0"></mat-divider>
-</mat-list>
+<app-list [data]="data" (remove)="remove.emit($event)"></app-list>
