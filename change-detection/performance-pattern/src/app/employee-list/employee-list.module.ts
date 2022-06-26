@@ -10,9 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { NameInputComponent } from './name-input/name-input.component';
 import { ListComponent } from './list/list.component'
+import { CalculatePipe } from '../pipes/calculate.pipe';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [EmployeeListComponent, NameInputComponent, ListComponent],
+  declarations: [EmployeeListComponent, NameInputComponent, ListComponent, CalculatePipe],
   exports: [EmployeeListComponent],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { ListComponent } from './list/list.component'
     MatChipsModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    ScrollingModule
   ],
 })
 export class EmployeeListModule { }
